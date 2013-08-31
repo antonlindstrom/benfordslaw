@@ -1,9 +1,16 @@
 package main
 
 import (
-	"fmt"
+	"encoding/csv"
+	"log"
 	"math"
+	"os"
+	"strconv"
 )
+
+type Dataset struct {
+	collection []int
+}
 
 // Return the leading digit of an integer
 func leadingDigit(num int) int {
@@ -36,16 +43,51 @@ func percentage(count, total int) float64 {
 	return float64(count) / float64(total) * 100
 }
 
-func main() {
-	dataset := []int{1000, 230, 540, 34, 100, 140}
+// Load dataset from CSV file
+func (d *Dataset) loadData(filename string) {
+	file, err := os.Open(filename)
+	defer file.Close()
 
-	total, count := countDataset(dataset)
+	if err != nil {
+		log.Printf("File open error: %v\n", err)
+		os.Exit(1)
+	}
+
+	reader := csv.NewReader(file)
+	records, errCSV := reader.ReadAll()
+
+	if errCSV != nil {
+		log.Printf("CSV Error: %v\n", err)
+		os.Exit(1)
+	}
+
+	data := make([]int, len(records))
+
+	for i, line := range records {
+		converted, e  := strconv.Atoi(line[0])
+
+		if e != nil {
+			log.Printf("Error converting value from CSV: %v\n", e)
+			os.Exit(2)
+		}
+
+		data[i] = converted
+	}
+
+	d.collection = data
+}
+
+func main() {
+	dataset := new(Dataset)
+	dataset.loadData("./data/FlowOfFunds.csv")
+
+	total, count := countDataset(dataset.collection)
 
 	for i := 1; i < 10; i++ {
 		e := benfordProbability(i)
 		p := percentage(count[i], total)
 		d := p - e
 
-		fmt.Printf("{num: %d, estimate: %f, dataset: %f, diff: %f}\n", i, e, p, d)
+		log.Printf("{num: %d, estimate: %f, dataset: %f, diff: %f}\n", i, e, p, d)
 	}
 }
