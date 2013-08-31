@@ -88,6 +88,6 @@ func main() {
 		p := percentage(count[i], total)
 		d := p - e
 
-		log.Printf("{num: %d, estimate: %f, dataset: %f, diff: %f}\n", i, e, p, d)
+		log.Printf("{num: %d, estimate: %f%%, dataset: %f%%, diff: %f%%}\n", i, e, p, d)
 	}
 }
