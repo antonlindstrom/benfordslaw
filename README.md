@@ -24,6 +24,9 @@ Results of this dataset (example output):
 
 ## Build
 
+Clone this repository into a structure like: `$GOPATH/src/github.com/antonlindstrom/benford`
+and run:
+
     make
 
 ## Test
