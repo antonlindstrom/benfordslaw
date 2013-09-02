@@ -24,5 +24,8 @@ Results of this dataset (example output):
 
 ## Build
 
-    mkdir bin
-    go build -o bin/benford benford.go
+    make
+
+## Test
+
+    make test
