@@ -38,7 +38,7 @@ func Percentage(count, total int) float64 {
 }
 
 func main() {
-	total, count := CountDataset(csv.Load())
+	total, count := CountDataset(loader.LoadCSV())
 
 	for i := 1; i < 10; i++ {
 		e := BenfordProbability(i)

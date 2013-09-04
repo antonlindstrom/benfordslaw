@@ -1,4 +1,4 @@
-package csv
+package loader
 
 import (
 	"encoding/csv"
@@ -12,7 +12,7 @@ type Dataset struct {
 }
 
 // Load dataset from CSV file
-func (d *Dataset) Read(filename string) {
+func (d *Dataset) ReadCSV(filename string) {
 	file, err := os.Open(filename)
 	defer file.Close()
 
@@ -45,8 +45,8 @@ func (d *Dataset) Read(filename string) {
 	d.collection = data
 }
 
-func Load() ([]int) {
+func LoadCSV() ([]int) {
 	dataset := new(Dataset)
-	dataset.Read("./data/FlowOfFunds.csv")
+	dataset.ReadCSV("./data/FlowOfFunds.csv")
 	return dataset.collection
 }
