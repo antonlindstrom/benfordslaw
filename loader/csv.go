@@ -45,8 +45,9 @@ func (d *Dataset) ReadCSV(filename string) {
 	d.collection = data
 }
 
-func LoadCSV() ([]int) {
+// Wrapper for ReadCSV()
+func LoadCSV(filename string) ([]int) {
 	dataset := new(Dataset)
-	dataset.ReadCSV("./data/FlowOfFunds.csv")
+	dataset.ReadCSV(filename)
 	return dataset.collection
 }

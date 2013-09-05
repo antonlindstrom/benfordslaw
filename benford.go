@@ -6,6 +6,8 @@ import (
 	"math"
 )
 
+const FILENAME string = "./data/FlowOfFunds.csv"
+
 // Return the leading digit of an integer
 func LeadingDigit(num int) int {
 	fnum := float64(num)
@@ -38,7 +40,7 @@ func Percentage(count, total int) float64 {
 }
 
 func main() {
-	total, count := CountDataset(loader.LoadCSV())
+	total, count := CountDataset(loader.LoadCSV(FILENAME))
 
 	for i := 1; i < 10; i++ {
 		e := BenfordProbability(i)
