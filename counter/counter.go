@@ -4,16 +4,6 @@ import (
 	"math"
 )
 
-type Digit struct {
-	Leading   int
-	Count     int
-}
-
-type Collection struct {
-	Digits  map[int]Digit
-	Total   int
-}
-
 // Return the leading digit of an integer
 func LeadingDigit(num int) int {
 	fnum := float64(num)
@@ -35,27 +25,13 @@ func Percentage(count, total int) float64 {
 }
 
 // Run through calculations of dataset
-func (c *Collection) CountDataset(numbers []int) {
-	c.Digits = make(map[int]Digit)
-	c.Total = len(numbers)
+func Process(numbers []int) (int, []int) {
+	count := make([]int, 10)
 
 	for i := range numbers {
-		leading := LeadingDigit(numbers[i])
-
-		var currentDigit Digit
-		count := c.Digits[leading].Count+1
-
-		currentDigit = Digit{
-			Leading:leading,
-			Count:count,
-		}
-
-		c.Digits[leading] = currentDigit
+		leadingDigit := LeadingDigit(numbers[i])
+		count[leadingDigit]++
 	}
-}
 
-func Process(numbers []int) (*Collection) {
-	c := new(Collection)
-	c.CountDataset(numbers)
-	return c
+	return len(numbers), count
 }
