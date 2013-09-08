@@ -15,14 +15,15 @@ type BenfordDigit struct {
 }
 
 func main() {
-	c := counter.Process(loader.LoadCSV())
+	numbers      := loader.LoadCSV()
+	total, count := counter.Process(numbers)
 
-	for i := range c.Digits {
+	for i := 1; i < 10; i++ {
 		var m BenfordDigit = BenfordDigit{
-			c.Digits[i].Leading,
-			c.Digits[i].Count,
+			i,
+			count[i],
 			counter.BenfordProbability(i),
-			counter.Percentage(i, c.Total),
+			counter.Percentage(i, total),
 		}
 
 		b, err := json.Marshal(m)
