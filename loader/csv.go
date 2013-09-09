@@ -32,7 +32,7 @@ func (d *Dataset) ReadCSV(filename string) {
 	data := make([]int, len(records))
 
 	for i, line := range records {
-		converted, e  := strconv.Atoi(line[0])
+		converted, e := strconv.Atoi(line[0])
 
 		if e != nil {
 			log.Printf("Error converting value from CSV: %v\n", e)
@@ -46,7 +46,7 @@ func (d *Dataset) ReadCSV(filename string) {
 }
 
 // Wrapper for ReadCSV()
-func LoadCSV(filename string) ([]int) {
+func LoadCSV(filename string) []int {
 	dataset := new(Dataset)
 	dataset.ReadCSV(filename)
 	return dataset.collection

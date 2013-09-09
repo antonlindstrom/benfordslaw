@@ -2,21 +2,21 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/antonlindstrom/benford/counter"
 	"github.com/antonlindstrom/benford/loader"
-	"fmt"
 )
 
 const FILENAME string = "./data/FlowOfFunds.csv"
 
 type BenfordDigit struct {
-	LeadingDigit   int
-	Count          int
-	Estimate       float64
-	Dataset        float64
+	LeadingDigit int
+	Count        int
+	Estimate     float64
+	Dataset      float64
 }
 
-func (digit BenfordDigit) JsonString() (string) {
+func (digit BenfordDigit) JsonString() string {
 	b, err := json.Marshal(digit)
 
 	if err != nil {
