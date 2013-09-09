@@ -12,15 +12,15 @@ dollars. The commas are removed, so the dataset is barely the same.
 
 Results of this dataset (example output):
 
-    2013/09/03 18:48:23 {num: 1, count: 14 estimate: 30.103000%, dataset: 25.454545%, diff: -4.648454%}
-    2013/09/03 18:48:23 {num: 2, count: 13 estimate: 17.609126%, dataset: 23.636364%, diff: 6.027238%}
-    2013/09/03 18:48:23 {num: 3, count: 5 estimate: 12.493874%, dataset: 9.090909%, diff: -3.402965%}
-    2013/09/03 18:48:23 {num: 4, count: 7 estimate: 9.691001%, dataset: 12.727273%, diff: 3.036271%}
-    2013/09/03 18:48:23 {num: 5, count: 5 estimate: 7.918125%, dataset: 9.090909%, diff: 1.172784%}
-    2013/09/03 18:48:23 {num: 6, count: 4 estimate: 6.694679%, dataset: 7.272727%, diff: 0.578048%}
-    2013/09/03 18:48:23 {num: 7, count: 3 estimate: 5.799195%, dataset: 5.454545%, diff: -0.344649%}
-    2013/09/03 18:48:23 {num: 8, count: 2 estimate: 5.115252%, dataset: 3.636364%, diff: -1.478889%}
-    2013/09/03 18:48:23 {num: 9, count: 2 estimate: 4.575749%, dataset: 3.636364%, diff: -0.939385%}
+    {"LeadingDigit":1,"Count":14,"Estimate":30.10299956639812,"Dataset":25.454545454545453}
+    {"LeadingDigit":2,"Count":13,"Estimate":17.609125905568124,"Dataset":23.636363636363637}
+    {"LeadingDigit":3,"Count":5,"Estimate":12.493873660829994,"Dataset":9.090909090909092}
+    {"LeadingDigit":4,"Count":7,"Estimate":9.691001300805642,"Dataset":12.727272727272727}
+    {"LeadingDigit":5,"Count":5,"Estimate":7.918124604762482,"Dataset":9.090909090909092}
+    {"LeadingDigit":6,"Count":4,"Estimate":6.694678963061322,"Dataset":7.2727272727272725}
+    {"LeadingDigit":7,"Count":3,"Estimate":5.799194697768673,"Dataset":5.454545454545454}
+    {"LeadingDigit":8,"Count":2,"Estimate":5.115252244738129,"Dataset":3.6363636363636362}
+    {"LeadingDigit":9,"Count":2,"Estimate":4.575749056067514,"Dataset":3.6363636363636362}
 
 ## Build
 
