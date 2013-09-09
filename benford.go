@@ -14,6 +14,17 @@ type BenfordDigit struct {
 	Dataset        float64
 }
 
+func (digit BenfordDigit) JsonString() (string) {
+	b, err := json.Marshal(digit)
+
+	if err != nil {
+		fmt.Printf("Failed to Marshal JSON: %s\n", err)
+		return ""
+	}
+
+	return string(b[:])
+}
+
 func main() {
 	numbers      := loader.LoadCSV()
 	total, count := counter.Process(numbers)
@@ -23,15 +34,9 @@ func main() {
 			i,
 			count[i],
 			counter.BenfordProbability(i),
-			counter.Percentage(i, total),
+			counter.Percentage(count[i], total),
 		}
 
-		b, err := json.Marshal(m)
-
-		if err != nil {
-			fmt.Printf("Failed to Marshal JSON: %s\n", err)
-		}
-
-		fmt.Printf("%s\n", string(b[:]))
+		fmt.Printf("%s\n", m.JsonString())
 	}
 }
