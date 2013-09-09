@@ -28,7 +28,7 @@ func (digit BenfordDigit) JsonString() (string) {
 }
 
 func main() {
-	total, count := (loader.LoadCSV(FILENAME))
+	total, count := counter.Process(loader.LoadCSV(FILENAME))
 
 	for i := 1; i < 10; i++ {
 		var m BenfordDigit = BenfordDigit{
