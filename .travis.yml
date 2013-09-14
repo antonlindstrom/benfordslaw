@@ -8,3 +8,5 @@ go:
 install:
   - make get-deps
   - make
+
+script: make test
