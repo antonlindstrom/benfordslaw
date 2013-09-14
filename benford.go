@@ -3,8 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/antonlindstrom/benford/counter"
-	"github.com/antonlindstrom/benford/loader"
+	"github.com/antonlindstrom/benfordslaw/counter"
+	"github.com/antonlindstrom/benfordslaw/loader"
 )
 
 const FILENAME string = "./data/FlowOfFunds.csv"

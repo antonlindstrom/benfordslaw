@@ -24,9 +24,10 @@ Results of this dataset (example output):
 
 ## Build
 
-Clone this repository into a structure like: `$GOPATH/src/github.com/antonlindstrom/benford`
+Clone this repository into a structure like: `$GOPATH/src/github.com/antonlindstrom/benfordslaw`
 and run:
 
+    make get-deps
     make
 
 ## Test
