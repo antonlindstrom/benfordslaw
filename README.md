@@ -1,5 +1,7 @@
 # Benford's Law
 
+[![Build Status](https://travis-ci.org/antonlindstrom/benfordslaw.png?branch=master)](https://travis-ci.org/antonlindstrom/benfordslaw)
+
 This is a simple implementation of
 [Benford's Law](http://en.wikipedia.org/wiki/Benford's_law).
 
