@@ -2,8 +2,8 @@ package benfordslaw
 
 import (
 	"encoding/json"
-	"log"
 	"github.com/antonlindstrom/benfordslaw/counter"
+	"log"
 )
 
 type BenfordDigit struct {
@@ -43,11 +43,11 @@ func (b *Collection) Populate(total int, count []int) {
 	}
 }
 
-func Process(set []int) (string) {
+func Process(set []int) string {
 	total, count := counter.Process(set)
 
 	c := new(Collection)
-	c.Populate(total,count)
+	c.Populate(total, count)
 
 	return c.JsonString()
 }
