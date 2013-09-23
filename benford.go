@@ -1,13 +1,10 @@
-package main
+package benfordslaw
 
 import (
 	"encoding/json"
-	"fmt"
+	"log"
 	"github.com/antonlindstrom/benfordslaw/counter"
-	"github.com/antonlindstrom/benfordslaw/loader"
 )
-
-const FILENAME string = "./data/FlowOfFunds.csv"
 
 type BenfordDigit struct {
 	LeadingDigit int
@@ -16,19 +13,23 @@ type BenfordDigit struct {
 	Dataset      float64
 }
 
-func (digit BenfordDigit) JsonString() string {
-	b, err := json.Marshal(digit)
+type Collection struct {
+	Digits []BenfordDigit
+}
+
+func (b *Collection) JsonString() string {
+	bytes, err := json.Marshal(b)
 
 	if err != nil {
-		fmt.Printf("Failed to Marshal JSON: %s\n", err)
+		log.Printf("Failed to Marshal JSON: %s\n", err)
 		return ""
 	}
 
-	return string(b[:])
+	return string(bytes)
 }
 
-func main() {
-	total, count := counter.Process(loader.LoadCSV(FILENAME))
+func (b *Collection) Populate(total int, count []int) {
+	b.Digits = make([]BenfordDigit, 10)
 
 	for i := 1; i < 10; i++ {
 		var m BenfordDigit = BenfordDigit{
@@ -38,6 +39,15 @@ func main() {
 			counter.Percentage(count[i], total),
 		}
 
-		fmt.Printf("%s\n", m.JsonString())
+		b.Digits[i] = m
 	}
+}
+
+func Process(set []int) (string) {
+	total, count := counter.Process(set)
+
+	c := new(Collection)
+	c.Populate(total,count)
+
+	return c.JsonString()
 }

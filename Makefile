@@ -1,6 +1,6 @@
 all:
 	@mkdir -p bin/
-	@go build -o bin/benford benford.go
+	@go build -o bin/example example/example.go
 
 get-deps:
 	@go get -d -v ./...
