@@ -16,6 +16,12 @@ func TestLeadingDigit(t *testing.T) {
 	}
 }
 
+func BenchmarkLeadingDigit(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		LeadingDigit(9980)
+	}
+}
+
 func TestBenfordProbability(t *testing.T) {
 	if int(BenfordProbability(1)) != 30 {
 		t.Error("expected 30 of int 1")
@@ -23,6 +29,12 @@ func TestBenfordProbability(t *testing.T) {
 
 	if int(BenfordProbability(3)) != 12 {
 		t.Error("expected 12 of int 3")
+	}
+}
+
+func BenchmarkBenfordProbability(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		BenfordProbability(3)
 	}
 }
 
@@ -44,8 +56,22 @@ func TestProcess(t *testing.T) {
 	}
 }
 
+func BenchmarkProcess(b *testing.B) {
+	set := []int{1, 1, 2}
+
+	for i := 0; i < b.N; i++ {
+		Process(set)
+	}
+}
+
 func TestPercentage(t *testing.T) {
 	if int(Percentage(2, 10)) != 20 {
 		t.Error("expected 20 of 2/10")
+	}
+}
+
+func BenchmarkPercentage(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Percentage(2, 10)
 	}
 }
