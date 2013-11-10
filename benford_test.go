@@ -21,9 +21,5 @@ func BenchmarkPopulate(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		c := new(Collection)
 		c.Populate(total, count)
-
-		if (c.Digits[0].Count != 0) {
-			b.Fatal("Count of 0 should be 0\n")
-		}
 	}
 }
