@@ -17,7 +17,8 @@ type Collection struct {
 	Digits []BenfordDigit
 }
 
-func (b *Collection) JsonString() string {
+// String will return a JSON representation of the Collection
+func (b Collection) String() string {
 	bytes, err := json.Marshal(b)
 
 	if err != nil {
@@ -28,6 +29,7 @@ func (b *Collection) JsonString() string {
 	return string(bytes)
 }
 
+// Populate the collection
 func (b *Collection) Populate(total int, count []int) {
 	b.Digits = make([]BenfordDigit, 10)
 
@@ -43,11 +45,12 @@ func (b *Collection) Populate(total int, count []int) {
 	}
 }
 
+// Process the dataset
 func Process(set []int) string {
 	total, count := counter.Process(set)
 
 	c := new(Collection)
 	c.Populate(total, count)
 
-	return c.JsonString()
+	return c.String()
 }
