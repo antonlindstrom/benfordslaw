@@ -12,13 +12,13 @@ type Dataset struct {
 }
 
 // Load dataset from CSV file
-func (d *Dataset) ReadCSV(filename string) {
+func (d *Dataset) ReadCSV(filename string) error {
 	file, err := os.Open(filename)
 	defer file.Close()
 
 	if err != nil {
 		log.Printf("File open error: %v\n", err)
-		os.Exit(1)
+		return err
 	}
 
 	reader := csv.NewReader(file)
@@ -26,7 +26,7 @@ func (d *Dataset) ReadCSV(filename string) {
 
 	if errCSV != nil {
 		log.Printf("CSV Error: %v\n", err)
-		os.Exit(1)
+		return err
 	}
 
 	data := make([]int, len(records))
@@ -36,18 +36,22 @@ func (d *Dataset) ReadCSV(filename string) {
 
 		if e != nil {
 			log.Printf("Error converting value from CSV: %v\n", e)
-			os.Exit(2)
+			return err
 		}
 
 		data[i] = converted
 	}
 
 	d.collection = data
+	return nil
 }
 
 // Wrapper for ReadCSV()
-func LoadCSV(filename string) []int {
+func LoadCSV(filename string) ([]int, error) {
 	dataset := new(Dataset)
-	dataset.ReadCSV(filename)
-	return dataset.collection
+	err := dataset.ReadCSV(filename)
+	if err != nil {
+		return []int{}, err
+	}
+	return dataset.collection, nil
 }

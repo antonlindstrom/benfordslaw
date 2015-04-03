@@ -5,7 +5,11 @@ import (
 )
 
 func TestLoadCSV(t *testing.T) {
-	csv := LoadCSV("../data/FlowOfFunds.csv")
+	csv, err := LoadCSV("../data/FlowOfFunds.csv")
+
+	if err != nil {
+		t.Error("Error was not expected from LoadCSV()")
+	}
 
 	if csv[0] != 19 {
 		t.Error("expected 19 from LoadCSV[0]")
