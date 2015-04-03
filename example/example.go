@@ -9,6 +9,10 @@ import (
 const FILENAME string = "./data/FlowOfFunds.csv"
 
 func main() {
-	csv := loader.LoadCSV(FILENAME)
+	csv, err := loader.LoadCSV(FILENAME)
+	if err != nil {
+		log.Printf("Failed to load CSV: %s\n", err)
+		return
+	}
 	log.Printf("%s\n", benfordslaw.Process(csv))
 }

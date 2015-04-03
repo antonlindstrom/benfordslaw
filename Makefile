@@ -1,11 +1,13 @@
-all:
+all: build
+
+build:
 	@mkdir -p bin/
 	@go build -o bin/example example/example.go
 
 get-deps:
 	@go get -d -v ./...
 
-test:
+test: build
 	@go test ./...
 
 coverage:
